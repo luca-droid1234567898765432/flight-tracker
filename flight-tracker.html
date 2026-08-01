@@ -264,14 +264,6 @@
   // worried about a leaked key — worst case on a no-card free key is
   // just a burned quota, not a bill.
   // ============================================================
-  var FLIGHT_API = {
-    RAPIDAPI_KEY: "70685ea973mshe012185c1cce48ap11aed9jsn127dbb17e0f3",   // <-- put your key here
-    RAPIDAPI_HOST: "aerodatabox.p.rapidapi.com"
-  };
-
-  function hasApiKey(){
-    return FLIGHT_API.RAPIDAPI_KEY && FLIGHT_API.RAPIDAPI_KEY.indexOf("PASTE_YOUR") !== 0;
-  }
 
   // ---- storage: localStorage on a real deployed site, in-memory fallback
   // inside sandboxed preview environments where localStorage is blocked ----
@@ -337,7 +329,7 @@
 
     setStatus('Fetching flight…', '');
     try {
-      var url = 'https://' + FLIGHT_API.RAPIDAPI_HOST + '/flights/number/' + encodeURIComponent(flightNum);
+      var url = '/api/flight?number=' + encodeURLComponent(flightNum);
       var res = await fetch(url, {
         method: 'GET',
         headers: {
